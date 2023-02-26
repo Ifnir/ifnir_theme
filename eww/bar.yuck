@@ -1,0 +1,61 @@
+(defwindow bottombar
+    :monitor 0
+    :windowtype "desktop"
+    :wm-ignore true
+    :geometry (geometry 
+      :x "0%"
+      :y "0%"
+      :width "20%"
+      :height "5px"
+      :anchor "top right"
+    )
+    :reserve (struts :side "top" :distance "4%")
+    (bottombar)
+)
+
+(defwidget bottombar []
+  (centerbox :orientation "h"
+    (box :halign "start" :orientation "h" :space-evenly false
+    (_workspaces :workspaces workspace :ws1 "" :ws2 "" :ws3 "" :ws4 "" :ws5 "" :default "")
+    )
+    (box :halign "end" :orientation "h" :space-evenly false)
+    (box :orientation "h" :halign "end" :space-evenly false
+      (metric 
+        :icon ""
+        :onclick "mc"
+        :value "${round(EWW_DISK["/"].used_perc, 0)}")
+    )
+  )
+)
+
+(defwidget metric [icon value ?onchange ?onclick ?class ?height ?width]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (termbutton :command "${onclick}" :height "1000" :width "1000"  :text "${icon}")
+    (scale :class {class != "" ? class : value > 50 ? value > 75 ? "error" : "warning" : "normal"}
+           :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwidget termbutton [command ?text ?floating ?width ?height]
+  (button :onclick "kitty -- sh -c '${floating == false ? "" : "i3-msg floating enable && clear && i3-msg resize set ${width == "" ? "800" : "${width}" }px ${height == "" ? "600" : "${height}" }px && i3-msg move position center && " } ${command}'"
+    (label :text text)
+  )
+)
+
+(defwidget _workspaces [workspaces ws1 ws2 ws3 ws4 ws5 default]
+    (box :class "workspaces"
+        (button "${workspaces}")
+        (button "${workspaces}")
+        (button ws3)
+        (button ws4)
+        (button ws5)
+        (button default)
+    )
+)
+
+(deflisten workspace :initial "workspaces" `~/Projects/i3tmsg/target/release/i3tmsg | awk '{print $2}'`)
+

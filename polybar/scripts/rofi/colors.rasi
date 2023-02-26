@@ -1,0 +1,24 @@
+/* colors */
+
+* {
+    border: 2px;  
+    margin: 0;  
+    padding: 2px;  
+    spacing: 0;
+
+    bg: #282a36;  
+    fg: #f8f8f2;  
+    blue: #6272a4;  
+    purple: #bd93f9;
+    background-color: @bg;  
+    text-color: @fg;
+}
+
+* {
+    background:     #2F343FFF;
+    background-alt: #383C4AFF;
+    foreground:     #BAC5D0FF;
+    selected:       #5294E2FF;
+    active:         #98C379FF;
+    urgent:         #E06B74FF;
+}

@@ -1,0 +1,74 @@
+/*********************************/
+@import "colors.scss";
+
+  .metric scale trough highlight {
+	all: unset;
+	background-color: $surface-green;
+	color: $black;
+	border-radius: 10px;
+  }
+  
+  .metric scale.warning trough highlight {
+	all: unset;
+	background-color: $surface-yellow;
+	color: $black;
+	border-radius: 10px;
+  }
+  
+  .metric scale.error trough highlight {
+	all: unset;
+	background-color: $error;
+	color: $black;
+	border-radius: 10px;
+  }
+  
+  .metric scale.volume trough highlight {
+	all: unset;
+	background-color: $surface-lightergrey;
+	color: $black;
+	border-radius: 10px;
+  }
+  
+  .metric scale trough {
+	all: unset;
+	background-color: $surface-darkgrey;
+	border-radius: 50px;
+	min-height: 3px;
+	min-width: 100px;
+	margin-left: 10px;
+	margin-right: 20px;
+  }
+
+  .bottombar {
+	background-color: $surface-grey;
+	color: #61AAD6;
+	padding: 2px;
+	font-size: 1em;
+	font-family: Hack Regular;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10%;
+  }
+
+  .workspaces {
+    background-color: $surface-grey;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
+  
+    font-family: "Hack NF Regular";
+    font-size: 28px;
+    margin-right: 20px;
+  
+    button {
+      color: #a89984;
+      margin: 0px 3px;
+    }
+    button.focused {
+      color: $surface-green;
+    }
+    button.urgent {
+      color: $surface-red;
+    }
+  }
