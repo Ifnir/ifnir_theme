@@ -1,3 +1,10 @@
+(deflisten workspace "scripts/i3tmsg") 
+(defwidget _workspaces []
+  (literal :content {replace(workspace, "sep", "
+   ")})
+)
+
+
 (defwindow bottombar
     :monitor 0
     :windowtype "desktop"
@@ -15,9 +22,7 @@
 
 (defwidget bottombar []
   (centerbox :orientation "h"
-    (box :halign "start" :orientation "h" :space-evenly false
-    (_workspaces :workspaces workspace :ws1 "" :ws2 "" :ws3 "" :ws4 "" :ws5 "" :default "")
-    )
+    (box :class "works" :orientation "h" :halign "start" :space-evenly false (_workspaces))
     (box :halign "end" :orientation "h" :space-evenly false)
     (box :orientation "h" :halign "end" :space-evenly false
       (metric 
@@ -45,17 +50,3 @@
     (label :text text)
   )
 )
-
-(defwidget _workspaces [workspaces ws1 ws2 ws3 ws4 ws5 default]
-    (box :class "workspaces"
-        (button "${workspaces}")
-        (button "${workspaces}")
-        (button ws3)
-        (button ws4)
-        (button ws5)
-        (button default)
-    )
-)
-
-(deflisten workspace :initial "workspaces" `~/Projects/i3tmsg/target/release/i3tmsg | awk '{print $2}'`)
-

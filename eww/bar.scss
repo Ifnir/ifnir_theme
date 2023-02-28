@@ -49,26 +49,29 @@
     border-bottom-left-radius: 10%;
   }
 
-  .workspaces {
-    background-color: $surface-grey;
-    border-radius: 15px;
-    margin-left: 5px;
-    margin-top: 5px;
-    padding-left: 10px;
-    padding-right: 5px;
+// Workspaces
+.works {
+   
+ 
+  border-radius: 15px;
+  margin-left: 5px;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  font-size: 20px;
+  margin-right: 20px;
   
-    font-family: "Hack NF Regular";
-    font-size: 28px;
-    margin-right: 20px;
-  
-    button {
-      color: #a89984;
-      margin: 0px 3px;
-    }
-    button.focused {
-      color: $surface-green;
-    }
-    button.urgent {
-      color: $surface-red;
-    }
-  }
+}
+
+.focused {
+  color: #61AAD6;
+}
+.urgent {
+  color: #f00a0a;
+}
+.unoccupied {
+  color: #ff00ea;
+}
+.occupied {
+  color: #ffffff;
+}
