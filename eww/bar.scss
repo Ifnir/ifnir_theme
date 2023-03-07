@@ -39,39 +39,55 @@
 	margin-right: 20px;
   }
 
+  .option {
+    margin-left: 5px;
+	  margin-right: 10px;
+  }
+
+  .data {
+    margin-left: 5px;
+	  margin-right: 10px;
+  }
+
   .bottombar {
 	background-color: $surface-grey;
 	color: #61AAD6;
 	padding: 2px;
 	font-size: 1em;
-	font-family: Hack Regular;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10%;
   }
 
-// Workspaces
-.works {
-   
- 
-  border-radius: 15px;
-  margin-left: 5px;
-  margin-top: 5px;
-  padding-left: 10px;
-  padding-right: 5px;
-  font-size: 20px;
-  margin-right: 20px;
-  
-}
+  .info {
+    border-radius: 15px;
+    margin-right: 3px;
+    margin-top: 2px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
-.focused {
-  color: #61AAD6;
-}
-.urgent {
-  color: #f00a0a;
-}
-.unoccupied {
-  color: #ff00ea;
-}
-.occupied {
-  color: #ffffff;
-}
+  .text {
+    font-size: 14px;
+    padding: 5px;
+  }
+  // Workspaces
+  .works {
+    border-radius: 15px;
+    margin-left: 3px;
+    margin-top: 2px;
+    font-size: 14px;
+  }
+  .unoccupied {
+    color: #e7e7e7;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .occupied {
+    color: #61AAD6;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .focused {
+    color: #61AAD6;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
