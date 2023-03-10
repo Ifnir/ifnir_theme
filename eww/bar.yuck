@@ -1,20 +1,25 @@
-(deflisten workspace "scripts/i3tmsg") 
-(defwidget _workspaces []
+(deflisten workspace :initial "0" "scripts/i3tmsg") 
+(defwidget _workspaces [] 
   (literal :content {replace(workspace, "sep", "
-   ")})
+    ")})
 )
 
+(defpoll volume :interval "2s"
+  "scripts/sys_info.sh --volpulse")
+
+(defpoll updates :interval "120s"
+  "scripts/sys_info.sh --checkupdate")
 
 (defwindow bottombar
     :monitor 0
-    :windowtype "desktop"
-    :wm-ignore true
+    :windowtype "dock"
+    :wm-ignore false
     :geometry (geometry 
       :x "0%"
       :y "0%"
-      :width "20%"
+      :width "100%"
       :height "5px"
-      :anchor "top right"
+      :anchor "center top"
     )
     :reserve (struts :side "top" :distance "4%")
     (bottombar)
@@ -22,16 +27,51 @@
 
 (defwidget bottombar []
   (centerbox :orientation "h"
+
     (box :class "works" :orientation "h" :halign "start" :space-evenly false (_workspaces))
+    
     (box :halign "end" :orientation "h" :space-evenly false)
     (box :orientation "h" :halign "end" :space-evenly false
+      (data
+        :icon "󰚰"
+        :value updates
+        )
       (metric 
         :icon ""
         :onclick "mc"
         :value "${round(EWW_DISK["/"].used_perc, 0)}")
+      (metric 
+        :icon ""
+        :value volume
+        :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")
+      (data
+        :icon "󰁫"
+        :value "${time.hour}:${time.min}"
+        )
+      (option
+        :icon ""
+        :onclick "~/.local/bin/eww open powermenu"
+        )
     )
   )
 )
+
+(defwidget option [icon ?onclick] 
+    (box :orientation "h"
+       :class "option"
+       :space-evenly false
+       (button :onclick onclick
+        (label :text icon ))))
+
+(defwidget data [icon value ?onclick] 
+    (box :orientation "h"
+       :class "option"
+       :space-evenly false
+       (button :onclick onclick
+        (label :class "text" :text icon )
+        )
+        (label :class "text" :text value)))
+
 
 (defwidget metric [icon value ?onchange ?onclick ?class ?height ?width]
   (box :orientation "h"
@@ -50,3 +90,9 @@
     (label :text text)
   )
 )
+
+
+
+
+
+

@@ -66,6 +66,26 @@ get_battery() {
 	cat /sys/class/power_supply/${BAT}/capacity
 }
 
+get_vol_amixer() {
+	amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -l
+}
+
+get_vol_pulseaudio() {
+	pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'
+}
+
+check_update() {
+	checkupdates 2>/dev/null | wc -l
+}
+
+check_wifi() {
+	if ip addr show wlan0 | grep -q 'state UP'; then
+	 iwgetid -r
+	else
+	 echo "Offline"
+	fi
+}
+
 ## Execute accordingly
 if [[ "$1" == "--cpu" ]]; then
 	get_cpu
@@ -75,4 +95,10 @@ elif [[ "$1" == "--blight" ]]; then
 	get_blight
 elif [[ "$1" == "--bat" ]]; then
 	get_battery
+elif [[ "$1" == "--volamixer" ]]; then
+	get_vol_amixer	
+elif [[ "$1" == "--volpulse" ]]; then
+	get_vol_pulseaudio	
+elif [[ "$1" == "--checkupdate" ]]; then
+	check_update	
 fi
