@@ -34,13 +34,13 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec_always --no-startup-id bash ~/.config/polybar/launch.sh
+# exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
 exec_always --no-startup-id ~/.fehbg &
-exec_always --no-startup-id bash ~/.config/polybar/scripts/starteww.sh
+exec_always --no-startup-id bash ~/.config/eww/scripts/starteww.sh
 
 # Bind all executable scripts
-bindsym $mod+o exec --no-startup-id ~/.config/polybar/scripts/launcher.sh
+bindsym $mod+o exec --no-startup-id ~/.config/eww/scripts/launcher.sh
 
 
 # GUI
@@ -163,9 +163,9 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload && nitrogen --restore
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart && nitrogen --restore
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 

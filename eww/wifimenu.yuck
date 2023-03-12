@@ -1,0 +1,19 @@
+(defwindow wifimenu
+    :monitor 0
+    :windowtype "dialog"
+    :wm-ignore false
+    :geometry (geometry 
+      :x "0%"
+      :y "0%"
+      :width "80%"
+      :height "3px"
+      :anchor "center")
+    :reserve (struts :side "top" :distance "4%")
+    (wifimenu)
+)
+
+(defwidget wifimenu []
+    (box :orientation "h" :valign "end" :halign "end" :space-evenly false :vexpand true :hexpand true
+        (button :onclick "" "")
+    ) 
+)

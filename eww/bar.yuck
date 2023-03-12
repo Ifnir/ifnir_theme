@@ -7,8 +7,11 @@
 (defpoll volume :interval "2s"
   "scripts/sys_info.sh --volpulse")
 
-(defpoll updates :interval "120s"
+(defpoll updates :interval "1800s"
   "scripts/sys_info.sh --checkupdate")
+
+(defpoll wifi :interval "10s"
+  "scripts/sys_info.sh --checkwifi")
 
 (defwindow bottombar
     :monitor 0
@@ -48,6 +51,9 @@
         :icon "󰁫"
         :value "${time.hour}:${time.min}"
         )
+      (option 
+        :icon wifi
+        :onclick "")
       (option
         :icon ""
         :onclick "~/.local/bin/eww open powermenu"

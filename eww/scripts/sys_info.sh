@@ -101,4 +101,6 @@ elif [[ "$1" == "--volpulse" ]]; then
 	get_vol_pulseaudio	
 elif [[ "$1" == "--checkupdate" ]]; then
 	check_update	
+elif [[ "$1" == "--checkwifi" ]]; then
+	check_wifi	
 fi
